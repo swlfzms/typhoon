@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+html{
+	height:100%;
+}
+body{
+	height:100%;
+	margin:0px;
+	padding:0px;	
+}
+#container{
+	height:100%;
+}
+#log{
+	background:#FFFFFF;
+	position:absolute;
+	right:10px;
+	top:50px;
+	width:250px;
+	height:100px;
+	overflow-y:scroll;
+}
+#log table{
+	border:1px solid #000000;
+}
+#log table tr{
+	border:1px solid #000000;
+}
