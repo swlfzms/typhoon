@@ -1,0 +1,154 @@
+body {
+	/* font-family: Verdana; */
+	font-size: 14px;
+	margin: 0;
+	/* background-image:url(../image/slide-05.jpg); */
+}
+
+#container {
+	margin: 0 auto;
+	width: 100%;
+}
+
+#header {
+	height: 100px;
+	background: #99CCFF;
+	margin-bottom: 5px;
+}
+
+#SysName{
+	font-weight: bolder;
+}
+
+#mainContent {
+	margin-top: 5px;
+	height: 630px;
+	margin-bottom: 5px;
+}
+
+#sidebar {
+	float: right;
+	width: 250px;
+	height: 630px;
+	background: #eee;
+}
+
+.mn {
+	/* margin-top: initial; */
+	margin: 0px;
+	padding: 0px 0px 3px 0px;
+	text-align: center;
+	font-family: 微软雅黑;
+	font-size: 14px;
+	background-color: #CCCCFF;
+}
+
+.table1 {
+	border-collapse: collapse;
+	text-align: center;
+	width: 100%;
+	background-color: #eeeeFF;
+	overflow: auto;
+	margin-bottom: 6px;
+}
+
+table1 td {
+	border: 1px solid black;
+}
+
+#fixedheight {
+	width: 250px;
+	height: 436px;
+	overflow: auto;
+}
+
+#fixedhead {
+	width: 233px;
+	position: absolute;
+}
+
+#fixedtable {
+	margin-bottom: 0px;
+}
+
+#blanktable {
+	margin-bottom: 0px;
+}
+
+#scrolltable {
+	font-size: 12px;
+	background-color: #fff;
+}
+
+#scrolltable td {
+	border: 1px solid #ddd;
+}
+
+#content {
+	margin-right: 255px !important;
+	margin-right: 255px;
+	height: 630px;
+	background: #CCFFFF;
+}
+
+
+.navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-brand:focus
+	{
+	color: #2980B9;
+	background-color: transparent
+}
+
+select {
+	width: 75px;
+	height: 24px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	font-family: inherit;
+	text-transform: none;
+	margin-top: 2px;
+	margin-bottom:2px;
+	font: inherit;
+}
+thead{
+	color:#5F5D5D;
+}
+.navbar {
+	margin-bottom:10px;
+	margin-top:10px;
+}
+.navbar-wrapper{
+	background-image:url(../image/head.jpg);
+	/* background-color:blue; */
+}
+
+ .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+.navbar-inverse {
+	background-color: #eee;
+	border-color: #eee;
+}
+
+.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:hover,.navbar-inverse .navbar-nav>.active>a:focus
+	{
+	color: #fff;
+	background-color: #0088cc
+}
+
+.navbar-inverse .navbar-text {
+	color: #9d9d9d
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: #5D5959
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus
+	{
+	color: #0088cc;
+	background-color: transparent
+}

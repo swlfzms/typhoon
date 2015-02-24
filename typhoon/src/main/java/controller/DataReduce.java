@@ -24,6 +24,11 @@ import tools.RequestBody;
 @WebServlet(value = "/datareduce")
 public class DataReduce extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private JSONArray getDataByNum(String num) throws IOException,
 			JSONException {
 		String path = DataReduce.class.getClassLoader().getResource("")

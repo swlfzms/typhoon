@@ -2,6 +2,7 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="typhoon">
         <wb-resource deploy-path="/" source-path="/target/typhoon"/>
+        <wb-resource deploy-path="/" source-path="/src/main/resources/configuration"/>
         <property name="context-root" value="/typhoon"/>
         <property name="java-output-path" value="/typhoon/src/main/webapp/WEB-INF/classes"/>
     </wb-module>

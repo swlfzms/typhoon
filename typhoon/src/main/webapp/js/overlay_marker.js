@@ -43,38 +43,40 @@ function getIcon(center_speed){
 	return myIcon;
 }
 
-function addMarker(obj){
-	var myIcon = getIcon(obj.center_speed);
+function addMarker(obj){	
+	var myIcon = getIcon(obj.centerSpeed);
 	
 	var positionPoint = new BMap.Point(obj.lng, obj.lat);
 	
 	var marker = new BMap.Marker(positionPoint, {icon: myIcon});
 	marker.disableDragging();
-	
+	marker.id = obj.serialNumber;
+
+	//marker.id = obj.serialNumber;
 	var content = "中心位置：" + obj.lng + "E" + obj.lat + "N<br>"
 				 +"最低气压：" + obj.pressure + "百帕<br>"
-				 +"中心风速：" + obj.center_speed + "m/s<br>"
-				 +"移动速度：" + obj.move_speed + "m/s<br>"
+				 +"中心风速：" + obj.centerSpeed + "m/s<br>"
+				 +"移动速度：" + obj.moveSpeed + "m/s<br>"
 				 +"移动方向：" + obj.direction + "<br>"
-				 +"七级风圈：" + obj.seven_solar_halo + "公里<br>"
-				 +"十级风圈：" + obj.ten_solar_halo + "公里<br>";
-	content = '<div style="margin:0;line-height:20px;padding:2px;>' + content + '</div>';
+				 +"七级风圈：" + obj.sevenSolarHalo + "公里<br>"
+				 +"十级风圈：" + obj.tenSolarHalo + "公里<br>";
+	content = '<div style="margin:0;line-height:20px;padding:2px;">' + content + '</div>';
 	
 	var searchInfoWindow = null;
 	searchInfoWindow = new BMapLib.SearchInfoWindow(map, content,{
-		title : "相关信息",
+		title : "台风编号:"+obj.serialNumber,
 		width : 200,
 		height : 145,
 		panel : "panel",
 		enableAutoPan : true,
 		searchTypes :[
-		              BMAPLIB_TAB_SEARCH,
-		              BMAPLIB_TAB_TO_HERE,
-		              BMAPLIB_TAB_FROM_HERE
-		              ]
+		    BMAPLIB_TAB_SEARCH,
+            BMAPLIB_TAB_TO_HERE,
+            BMAPLIB_TAB_FROM_HERE
+		]
 	}) ;
 	
-	var radius = obj.seven_solar_halo * 1000;
+	var radius = obj.sevenSolarHalo * 1000;
 	
 	var color = getColor(radius);
 	
@@ -97,14 +99,12 @@ function addMarker(obj){
 	});
 	
 	function add(){
-		map.addOverlay(circle);
-		
+		map.addOverlay(circle);		
 		searchInfoWindow.open(marker);
 	}
 	
 	function remove(){
-		map.removeOverlay(circle);
-		
+		map.removeOverlay(circle);		
 		searchInfoWindow.close(marker);
 	}
 	
@@ -123,7 +123,7 @@ function addMarker(obj){
 	});
 	
 	//add marker
-	map.addOverlay(market);
+	map.addOverlay(marker);
 
 	
 }
@@ -173,21 +173,21 @@ function getData(){
 	return result;
 }
  
-function addPath(objson){
-	var obj = JSON.parse(objson);
+function addPath(obj){
+	//var obj = JSON.parse(objson);
 	var firstpoint = false;
 	var pointfrom, pointto;
 	
 	var val;
 	
 	$(obj).each(function(index){
-		val = obj[index];
+		val = obj[index];		
 		var point = new BMap.Point(val.lng, val.lat);
 		
 		addMarker(val);
 		if(firstpoint){
 			pointto = point;
-			addLine(pointfrom,pointto);
+			addLine(pointfrom,pointto,val.serialNumber);
 			pointfrom = pointto;
 		}else{
 			pointfrom = point;
@@ -215,25 +215,38 @@ function getColor(radiusParam){
 	}
 }
 
- function addLine(point1, point2){
+ function addLine(point1, point2, id){
 	 var polyline = new BMap.Polyline([point1,point2], {strokeColor:"black", strokeWeight:1, strokeOpacity:0.5});
+	 polyline.id = id
 	 map.addOverlay(polyline);
  }
 
-function clear(){
+function clearCurrentOverride(){
+	var selectedSN = document.getElementById("selectedSN");
+	var selectedSNIndex = selectedSN.selectedIndex;
+	if(selectedSNIndex != 0){
+		var serialNumber = selectedSN.options[selectedSNIndex].value;
+		var allOverlays = map.getOverlays();
+		for(var i = 0; i < allOverlays.length - 1; i++){		
+			if(allOverlays[i].id == serialNumber){
+				map.removeOverlay(allOverlays[i]);
+			}		
+		}
+	}	
+	
+	/*
+	if(serialNumber != null){
+		var allOverlays = map.getOverlays();
+		for(var i = 0; i < allOverlays.length - 1; i++){		
+			if(allOverlays[i].id == serialNumber){
+				map.removeOverlay(allOverlays[i]);
+			}		
+		}
+	}else{
+		map.clearOverlays();
+	}	
+	*/
+}
+function clearAll(){
 	map.clearOverlays();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

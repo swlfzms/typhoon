@@ -1,42 +1,207 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" type="text/css" href="css/popView.css" />
-<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+            Typhoon
+        </title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css"/>
+		<link href="css/layout.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A1ecf057768d578a5ac4fe5ab63e713d"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>        
+        <script type="text/javascript" src="js/convertor.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-table.min.js"></script>
+        <!-- <link href="css/carousel.css" rel="stylesheet"> -->
+        
+    </head>
+    
+    <body>
+        <!-- <div id="head">head</div> -->
+        <!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">
+        Toggle navigation
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        </button>
+        <a class="navbar-brand" id="SysName" href="#">
+        台风网
+        </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right" role="form">
+        <div class="form-group">
+        <input type="text" placeholder="用户名" class="form-control">
+        </div>
+        <div class="form-group">
+        <input type="password" placeholder="密码" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">
+        登陆
+        </button>
+        </form>
+        </div>
+        /.navbar-collapse
+        </div>
+        </nav> -->
+        <div class="navbar-wrapper">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">
+                                    Toggle navigation
+                                </span>
+                                <span class="icon-bar">
+                                </span>
+                                <span class="icon-bar">
+                                </span>
+                                <span class="icon-bar">
+                                </span>
+                            </button>
+                            <a class="navbar-brand" href="#">
+                                台风网
+                            </a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="#">
+                                        主页面
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="dataMode.html">
+                                        数据模板
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#contact">
+                                        下载模板
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="signin.html">
+                                        管理员登陆
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div id="mainContent">
+            <div id="sidebar">
+                <p class="mn">
+                    台风信息检索
+                </p>
+                <table class="table1 table-bordered">
+                    <tr>
+                        <td>
+                            年份：
+                            <select id="selectedYear" name="selectedYear" onclick="selectYearChange()">
+                            </select>
+                        </td>
+                        <td>
+                            编号：
+                            <select id="selectedSN" name="selectedSN" onclick="selectSNChange()">
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <p class="mn">
+                    台风基本信息
+                </p>
+                <table class="table1 table-striped table-bordered" id="basicTable">
+                    <tr>
+                        <td>
+                            中文名
+                        </td>
+                        <td id="name_zh">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            英文名
+                        </td>
+                        <td id="name_en">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-primary btn-xs" type="button" onclick="showPath()"
+                            style="width: 83px;">
+                                显示路径
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-xs" type="button" onclick="showSimilarPath()"
+                            style="width: 83px;">
+                                相似路径
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-primary btn-xs" type="button" onclick="clearCurrentOverride()">
+                                清除当前路径
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-xs" type="button" onclick="clearAll()">
+                                清除所有路径
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <p class="mn">
+                    台风路径信息
+                </p>
+                <div id="fixedheight">
+                    <table class="table1 table-bordered table-hover" id="scrolltable" data-toggle="table"
+                    data-cache="false" data-height="430">
+                        <tr>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="content">
+            </div>
+            <!--这个居左 -->
+        </div>
+        <hr>
+        <footer>
+            <p>
+                &copy; Design by Jason & Lipper
+            </p>
+        </footer>
+    </body>
 
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A1ecf057768d578a5ac4fe5ab63e713d"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>	
-<script type="text/javascript" src="js/convertor.js"></script>
-
-<title>popView</title>
-</head>
-<body>
-<div id="container"></div>
-<div id="log">
-	<table id="dataTableDetail" cellspacing="0" align="center">
-		<tr>
-			<td>monkey</td>
-			<td>monkey</td>
-			<td>monkey</td>
-		</tr>
-		<tr>
-			<td>snake</td>
-			<td>snake</td>
-			<td>snake</td>
-		</tr>
-		<tr>
-			<td>rabbit</td>
-			<td>rabbit</td>
-			<td>rabbit</td>
-		</tr>
-	</table>
-</div>
-</body>
 </html>
-
-<script type="text/javascript" src="js/map_init_control.js"></script>
-<script type="text/javascript" src="js/overlay_marker.js"></script>
-<script type="text/javascript" src="js/main_control.js"></script>
+<script type="text/javascript" src="js/map_init_control.js">
+</script>
+<script type="text/javascript" src="js/overlay_marker.js">
+</script>
+<script type="text/javascript" src="js/main_control.js">
+</script>
+<script type="text/javascript" src="js/datainitialization.js">
+</script>
+<script type="text/javascript" src="js/preloadfunction.js">
+</script>

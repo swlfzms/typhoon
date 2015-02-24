@@ -105,6 +105,42 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.5.6</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>		
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysqldriver</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/jar/mysqldriver-1.0.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.12</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/jar/jxl-2.12.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.apache</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/jar/poi-3.0.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.commons</groupId>
+			<artifactId>fileupload</artifactId>
+			<version>1.3</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/jar/fileupload-1.3.jar</systemPath>
+		</dependency>
+		
+			
 	</dependencies>
 
 </project>
